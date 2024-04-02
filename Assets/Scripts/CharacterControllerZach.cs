@@ -12,8 +12,6 @@ public class CharacterControllerZach : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
-    public float walkSpeed = 7f;
-    public float runSpeed = 12f;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -52,7 +50,7 @@ public class CharacterControllerZach : MonoBehaviour
         //run();
 
         //grounded check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 1, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         //handles drag, then handles Animator grounded boolean. Ended up not needing the grounded boolean within animator, but kept the code just in case
         if (grounded)
@@ -86,7 +84,7 @@ public class CharacterControllerZach : MonoBehaviour
             readyToJump = false;
             jump();
             //playerAnimation.SetTrigger("jump_trigger");
-            //Invoke(nameof(resetJump), jumpCooldown);
+            Invoke(nameof(resetJump), jumpCooldown);
         }
 
         //if (Input.GetKey(punchKey) && grounded)
