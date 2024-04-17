@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CharacterControllerZach : MonoBehaviour
@@ -32,6 +33,11 @@ public class CharacterControllerZach : MonoBehaviour
     Rigidbody rb;
     private Animator playerAnimation;
     public bool isRunning;
+
+    public int cheeseScore;
+    public TextMeshProUGUI scoreText;
+
+    public GameManager gameManagerVariable;
 
     void Start()
     {
@@ -66,6 +72,7 @@ public class CharacterControllerZach : MonoBehaviour
 
         Vector3 playerVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         playerAnimation.SetFloat("move_speed", playerVelocity.magnitude);
+        UpdateScore();
     }
 
     private void FixedUpdate()
@@ -139,6 +146,19 @@ public class CharacterControllerZach : MonoBehaviour
     private void resetJump()
     {
         readyToJump = true;
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "CheesePickup")
+        {
+            cheeseScore = cheeseScore + 1;
+        }
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "Cheese: " + cheeseScore;
     }
 
     //private void run()
