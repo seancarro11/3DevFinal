@@ -19,7 +19,7 @@ public class CharacterControllerZach : MonoBehaviour
     // Leftover code from Clinic 2
     //public KeyCode punchKey = KeyCode.E;
     //public KeyCode crouchKey = KeyCode.LeftControl;
-    //public KeyCode runKey = KeyCode.LeftShift;
+    public KeyCode runKey = KeyCode.LeftShift;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -53,7 +53,7 @@ public class CharacterControllerZach : MonoBehaviour
         playerInput();
         speedControl();
         // Sprint function also from Clinic 2
-        //run();
+        run();
 
         //grounded check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
@@ -90,7 +90,7 @@ public class CharacterControllerZach : MonoBehaviour
         {
             readyToJump = false;
             jump();
-            //playerAnimation.SetTrigger("jump_trigger");
+            playerAnimation.SetTrigger("jump_trigger");
             Invoke(nameof(resetJump), jumpCooldown);
         }
 
@@ -161,24 +161,27 @@ public class CharacterControllerZach : MonoBehaviour
         scoreText.text = "Cheese: " + cheeseScore;
     }
 
-    //private void run()
-    //{
-    //    if (Input.GetKey(runKey) && grounded)
-    //    {
-    //        isRunning = true;
-    //    }
-    //    else
-    //    {
-    //        isRunning = false;
-    //    }
+    public float runSpeed;
+    public float walkSpeed;
 
-    //    if (isRunning == true)
-    //    {
-    //        moveSpeed = runSpeed;
-    //    }
-    //    else
-    //    {
-    //        moveSpeed = walkSpeed;
-    //    }
-    //}
+    private void run()
+    {
+        if (Input.GetKey(runKey) && grounded)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+
+        if (isRunning == true)
+        {
+            moveSpeed = runSpeed;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+        }
+    }
 }
