@@ -12,6 +12,8 @@ public class ThirdPersonCameraZach : MonoBehaviour
     public Rigidbody rb;
     public float rotationSpeed;
 
+    public GameManager gameManagerVariable;
+
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
