@@ -7,9 +7,7 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     
-    private int score;
-    public TextMeshProUGUI scoreText;
-    public bool isGameActive;
+    
     public GameObject startScreen;
     public GameObject levelEndScreen;
     public GameObject optionsScreen;
@@ -18,9 +16,11 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject gameHUD;
 
+    public bool isGameActive;
+
     void Start()
     {
-        score = 0;
+        isGameActive = false;
     }
 
     void Update()
@@ -28,12 +28,19 @@ public class GameManager : MonoBehaviour
         PauseGame();
     }
 
-    public void UpdateScore(int scoreToAdd)
+    public void StartGame()
     {
-        score += scoreToAdd;
-        scoreText.text = "Cheese: " + score;
+        startScreen.gameObject.SetActive(false);
+        levelEndScreen.gameObject.SetActive(false);
+        optionsScreen.gameObject.SetActive(false);
+        controlsScreen.gameObject.SetActive(false);
+        gameOverScreen.gameObject.SetActive(false);
+        pauseScreen.gameObject.SetActive(false);
+        gameHUD.SetActive(true);
+        //reset the game somehow, maybe just simply reload scene from start
+        isGameActive = true;
     }
-
+    
     public void BackToMainMenu()
     {
         startScreen.gameObject.SetActive(true);
@@ -78,8 +85,49 @@ public class GameManager : MonoBehaviour
             optionsScreen.gameObject.SetActive(false);
             controlsScreen.gameObject.SetActive(false);
             gameOverScreen.gameObject.SetActive(false);
+            gameHUD.SetActive(false);
             //disable player and enemy movement, and also stop timer if there is one
+            isGameActive = false;
         }
+    }
+
+    public void Unpause()
+    {
+        pauseScreen.gameObject.SetActive(false);
+        startScreen.gameObject.SetActive(false);
+        levelEndScreen.gameObject.SetActive(false);
+        optionsScreen.gameObject.SetActive(false);
+        controlsScreen.gameObject.SetActive(false);
+        gameOverScreen.gameObject.SetActive(false);
+        gameHUD.SetActive(true);
+
+        isGameActive = true;
+    }
+
+    public void LevelEnd()
+    {
+        pauseScreen.gameObject.SetActive(false);
+        startScreen.gameObject.SetActive(false);
+        levelEndScreen.gameObject.SetActive(true);
+        optionsScreen.gameObject.SetActive(false);
+        controlsScreen.gameObject.SetActive(false);
+        gameOverScreen.gameObject.SetActive(false);
+        gameHUD.SetActive(false);
+
+        isGameActive = false;
+    }
+
+    public void GameOver()
+    {
+        pauseScreen.gameObject.SetActive(false);
+        startScreen.gameObject.SetActive(false);
+        levelEndScreen.gameObject.SetActive(false);
+        optionsScreen.gameObject.SetActive(false);
+        controlsScreen.gameObject.SetActive(false);
+        gameOverScreen.gameObject.SetActive(true);
+        gameHUD.SetActive(false);
+
+        isGameActive = false;
     }
 
     // Going to need to put the below commented text in the player movement script:
