@@ -26,7 +26,7 @@ public class AikoEnemyAIScript : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("pCube11").transform;
+        player = GameObject.Find("PlayerNEW").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
