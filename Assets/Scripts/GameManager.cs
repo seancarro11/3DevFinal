@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelEnd()
     {
-        if (controllerVariable.cheeseScore >= 20)
+        if (controllerVariable.cheeseScore >= 12)
         {
             pauseScreen.gameObject.SetActive(false);
             startScreen.gameObject.SetActive(false);
