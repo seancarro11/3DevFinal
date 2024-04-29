@@ -5,10 +5,26 @@ using UnityEngine.AI;
 
 public class AikoNEWEnemyAIScript : MonoBehaviour
 {
+    //For the waypoints
     NavMeshAgent agent;
     public Transform[] waypoints;
     int waypointIndex;
     Vector3 target;
+
+    //For the Enemy Detection / Attack
+    public float viewRaadius = 15;
+    public float viewAngle = 90;
+    public LayerMask playerMask;
+    public LayerMask obstacleMask;
+    public float meshResolution = 1f;
+    public int edgeIterations = 4;
+    public float edgeDistance = 0.5f;
+
+    public Transform[] controlPoint;
+    int m_CurrentControlpointIndex;
+
+    Vector3 playerLastPosisiton = Vector3.zero;
+    Vector3 m_PlayerPosition;
 
     void Start()
     {
