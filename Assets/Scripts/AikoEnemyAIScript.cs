@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//This is an old script that I don't use anymore!!!
+
 public class AikoEnemyAIScript : MonoBehaviour
 {
-    //This is just so we have a working AI 
-
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
