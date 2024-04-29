@@ -39,6 +39,9 @@ public class CharacterControllerZach : MonoBehaviour
 
     public GameManager gameManagerVariable;
 
+    private AudioSource playerAudio;
+    public AudioClip jumpSound;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -46,6 +49,7 @@ public class CharacterControllerZach : MonoBehaviour
         readyToJump = true;
         playerAnimation = GetComponent<Animator>();
         isRunning = false;
+        playerAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -91,6 +95,7 @@ public class CharacterControllerZach : MonoBehaviour
             readyToJump = false;
             jump();
             playerAnimation.SetTrigger("jump_trigger");
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
             Invoke(nameof(resetJump), jumpCooldown);
         }
 
@@ -158,7 +163,7 @@ public class CharacterControllerZach : MonoBehaviour
 
     public void UpdateScore()
     {
-        scoreText.text = "Cheese: " + cheeseScore;
+        scoreText.text = "Cheese: " + cheeseScore + " ";
     }
 
     public float runSpeed;
