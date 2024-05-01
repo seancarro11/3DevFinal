@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour {
     [SerializeField]
     private bool countDown = true;
 
-    private float timer;
+    public float timer;
     [SerializeField]
     private TextMeshProUGUI firstMinute;
     [SerializeField]
@@ -47,6 +47,14 @@ public class Timer : MonoBehaviour {
             UpdateTimerDisplay(timer);
         } else {
             FlashTimer();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "CheesePickup")
+        {
+            timer += 30f;
         }
     }
 
