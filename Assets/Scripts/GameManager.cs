@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Rigidbody playerRb;
 
     public CharacterControllerZach controllerVariable;
+    public Timer timeController;
 
     void Start()
     {
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelEnd()
     {
-        if (controllerVariable.cheeseScore >= 20)
+        if (controllerVariable.cheeseScore >= 12)
         {
             pauseScreen.gameObject.SetActive(false);
             startScreen.gameObject.SetActive(false);
@@ -142,20 +143,18 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //if (shopkeep makes contact with mouse)
-        //{
-        //    die
-        //}
-        
-        pauseScreen.gameObject.SetActive(false);
-        startScreen.gameObject.SetActive(false);
-        levelEndScreen.gameObject.SetActive(false);
-        optionsScreen.gameObject.SetActive(false);
-        controlsScreen.gameObject.SetActive(false);
-        gameOverScreen.gameObject.SetActive(true);
-        gameHUD.gameObject.SetActive(false);
+        if (timeController.timer == 0f)
+        {
+            pauseScreen.gameObject.SetActive(false);
+            startScreen.gameObject.SetActive(false);
+            levelEndScreen.gameObject.SetActive(false);
+            optionsScreen.gameObject.SetActive(false);
+            controlsScreen.gameObject.SetActive(false);
+            gameOverScreen.gameObject.SetActive(true);
+            gameHUD.gameObject.SetActive(false);
 
-        isGameActive = false;
+            isGameActive = false;
+        }
     }
 
     public void FreezePlayer()
