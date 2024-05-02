@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         PauseGame();
         LevelEnd();
         FreezePlayer();
+        GameOver();
     }
 
     public void StartGame()
@@ -126,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelEnd()
     {
-        if (controllerVariable.cheeseScore >= 12)
+        if (controllerVariable.cheeseScore >= 30)
         {
             pauseScreen.gameObject.SetActive(false);
             startScreen.gameObject.SetActive(false);
@@ -141,9 +142,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public Timer timerVariable;
+
     public void GameOver()
     {
-        if (timeController.timer == 0f)
+        if (timerVariable.timer == 0f)
         {
             pauseScreen.gameObject.SetActive(false);
             startScreen.gameObject.SetActive(false);
@@ -167,7 +170,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive == true)
         {
             playerRb.constraints = RigidbodyConstraints.None;
-            playerRb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            playerRb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
         }
     }

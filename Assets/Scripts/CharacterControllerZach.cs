@@ -36,6 +36,8 @@ public class CharacterControllerZach : MonoBehaviour
 
     public int cheeseScore;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI endScoreText;
+    public TextMeshProUGUI levelEndScoreText;
 
     public GameManager gameManagerVariable;
 
@@ -153,17 +155,23 @@ public class CharacterControllerZach : MonoBehaviour
         readyToJump = true;
     }
 
+    public Timer timerVariable;
+
     public void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "CheesePickup")
         {
             cheeseScore = cheeseScore + 1;
+            timerVariable.timer += 15f;
         }
     }
 
     public void UpdateScore()
     {
         scoreText.text = "Cheese: " + cheeseScore + " ";
+        endScoreText.text = "You got " + cheeseScore + "/35 cheese pieces";
+        levelEndScoreText.text = "Cheese Pieces: " + cheeseScore;
+
     }
 
     public float runSpeed;

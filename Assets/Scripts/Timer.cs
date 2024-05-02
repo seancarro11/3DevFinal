@@ -3,7 +3,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour {
     [SerializeField]
-    private float timerDuration = 3f * 60f; 
+    public float timerDuration = 3f * 60f; 
 
     [SerializeField]
     private bool countDown = true;
@@ -50,13 +50,13 @@ public class Timer : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "CheesePickup")
-        {
-            timer += 30f;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.name == "CheesePickup")
+    //    {
+    //        timerDuration += 30f;
+    //    }
+    //}
 
     private void UpdateTimerDisplay(float time) {
         if (time < 0) {
