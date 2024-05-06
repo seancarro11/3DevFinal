@@ -19,7 +19,7 @@ public class CharacterControllerZach : MonoBehaviour
     // Leftover code from Clinic 2
     //public KeyCode punchKey = KeyCode.E;
     //public KeyCode crouchKey = KeyCode.LeftControl;
-    public KeyCode runKey = KeyCode.LeftShift;
+    //public KeyCode runKey = KeyCode.LeftShift;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -36,13 +36,8 @@ public class CharacterControllerZach : MonoBehaviour
 
     public int cheeseScore;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI endScoreText;
-    public TextMeshProUGUI levelEndScoreText;
 
     public GameManager gameManagerVariable;
-
-    private AudioSource playerAudio;
-    public AudioClip jumpSound;
 
     void Start()
     {
@@ -51,7 +46,6 @@ public class CharacterControllerZach : MonoBehaviour
         readyToJump = true;
         playerAnimation = GetComponent<Animator>();
         isRunning = false;
-        playerAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -59,7 +53,7 @@ public class CharacterControllerZach : MonoBehaviour
         playerInput();
         speedControl();
         // Sprint function also from Clinic 2
-        run();
+        //run();
 
         //grounded check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
@@ -96,8 +90,7 @@ public class CharacterControllerZach : MonoBehaviour
         {
             readyToJump = false;
             jump();
-            playerAnimation.SetTrigger("jump_trigger");
-            playerAudio.PlayOneShot(jumpSound, 1.0f);
+            //playerAnimation.SetTrigger("jump_trigger");
             Invoke(nameof(resetJump), jumpCooldown);
         }
 
@@ -155,46 +148,37 @@ public class CharacterControllerZach : MonoBehaviour
         readyToJump = true;
     }
 
-    public Timer timerVariable;
-
     public void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "CheesePickup")
         {
             cheeseScore = cheeseScore + 1;
-            timerVariable.timer += 15f;
         }
     }
 
     public void UpdateScore()
     {
-        scoreText.text = "Cheese: " + cheeseScore + " ";
-        endScoreText.text = "You got " + cheeseScore + "/35 cheese pieces";
-        levelEndScoreText.text = "Cheese Pieces: " + cheeseScore;
-
+        scoreText.text = "Cheese: " + cheeseScore;
     }
 
-    public float runSpeed;
-    public float walkSpeed;
+    //private void run()
+    //{
+    //    if (Input.GetKey(runKey) && grounded)
+    //    {
+    //        isRunning = true;
+    //    }
+    //    else
+    //    {
+    //        isRunning = false;
+    //    }
 
-    private void run()
-    {
-        if (Input.GetKey(runKey) && grounded)
-        {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-
-        if (isRunning == true)
-        {
-            moveSpeed = runSpeed;
-        }
-        else
-        {
-            moveSpeed = walkSpeed;
-        }
-    }
+    //    if (isRunning == true)
+    //    {
+    //        moveSpeed = runSpeed;
+    //    }
+    //    else
+    //    {
+    //        moveSpeed = walkSpeed;
+    //    }
+    //}
 }

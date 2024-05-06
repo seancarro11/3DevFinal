@@ -11,7 +11,4 @@ public class CheesePickup
         count = itemCount;
 
     }
-
-
-
 }

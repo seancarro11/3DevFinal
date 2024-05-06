@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,50 +16,41 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject gameHUD;
 
-    public bool isGameActive = false;
-    public Rigidbody playerRb;
-
-    public CharacterControllerZach controllerVariable;
-    public Timer timeController;
+    public bool isGameActive;
 
     void Start()
     {
-        
+        isGameActive = false;
     }
 
     void Update()
     {
         PauseGame();
-        LevelEnd();
-        FreezePlayer();
-        GameOver();
     }
 
     public void StartGame()
     {
-        
-        SceneManager.LoadScene(1);
         startScreen.gameObject.SetActive(false);
         levelEndScreen.gameObject.SetActive(false);
         optionsScreen.gameObject.SetActive(false);
         controlsScreen.gameObject.SetActive(false);
         gameOverScreen.gameObject.SetActive(false);
         pauseScreen.gameObject.SetActive(false);
-        gameHUD.gameObject.SetActive(true);
+        gameHUD.SetActive(true);
+        //reset the game somehow, maybe just simply reload scene from start
         isGameActive = true;
     }
     
     public void BackToMainMenu()
     {
-        isGameActive = false;
-        SceneManager.LoadScene(0);
         startScreen.gameObject.SetActive(true);
         levelEndScreen.gameObject.SetActive(false);
         optionsScreen.gameObject.SetActive(false);
         controlsScreen.gameObject.SetActive(false);
         gameOverScreen.gameObject.SetActive(false);
         pauseScreen.gameObject.SetActive(false);
-        gameHUD.gameObject.SetActive(false);
+        gameHUD.SetActive(false);
+        //reset the game somehow, maybe just simply reload scene from start
     }
 
     public void OpenOptions()
@@ -71,7 +61,7 @@ public class GameManager : MonoBehaviour
         controlsScreen.gameObject.SetActive(false);
         gameOverScreen.gameObject.SetActive(false);
         pauseScreen.gameObject.SetActive(false);
-        gameHUD.gameObject.SetActive(false);
+        gameHUD.SetActive(false);
     }
 
     public void OpenControls()
@@ -82,7 +72,7 @@ public class GameManager : MonoBehaviour
         controlsScreen.gameObject.SetActive(true);
         gameOverScreen.gameObject.SetActive(false);
         pauseScreen.gameObject.SetActive(false);
-        gameHUD.gameObject.SetActive(false);
+        gameHUD.SetActive(false);
     }
 
     public void PauseGame()
@@ -95,21 +85,10 @@ public class GameManager : MonoBehaviour
             optionsScreen.gameObject.SetActive(false);
             controlsScreen.gameObject.SetActive(false);
             gameOverScreen.gameObject.SetActive(false);
-            gameHUD.gameObject.SetActive(false);
+            gameHUD.SetActive(false);
             //disable player and enemy movement, and also stop timer if there is one
             isGameActive = false;
         }
-    }
-
-    public void backToPause()
-    {
-        pauseScreen.gameObject.SetActive(true);
-        startScreen.gameObject.SetActive(false);
-        levelEndScreen.gameObject.SetActive(false);
-        optionsScreen.gameObject.SetActive(false);
-        controlsScreen.gameObject.SetActive(false);
-        gameOverScreen.gameObject.SetActive(false);
-        gameHUD.gameObject.SetActive(false);
     }
 
     public void Unpause()
@@ -120,58 +99,48 @@ public class GameManager : MonoBehaviour
         optionsScreen.gameObject.SetActive(false);
         controlsScreen.gameObject.SetActive(false);
         gameOverScreen.gameObject.SetActive(false);
-        gameHUD.gameObject.SetActive(true);
+        gameHUD.SetActive(true);
 
         isGameActive = true;
     }
 
     public void LevelEnd()
     {
-        if (controllerVariable.cheeseScore >= 30)
-        {
-            pauseScreen.gameObject.SetActive(false);
-            startScreen.gameObject.SetActive(false);
-            levelEndScreen.gameObject.SetActive(true);
-            optionsScreen.gameObject.SetActive(false);
-            controlsScreen.gameObject.SetActive(false);
-            gameOverScreen.gameObject.SetActive(false);
-            gameHUD.gameObject.SetActive(false);
+        pauseScreen.gameObject.SetActive(false);
+        startScreen.gameObject.SetActive(false);
+        levelEndScreen.gameObject.SetActive(true);
+        optionsScreen.gameObject.SetActive(false);
+        controlsScreen.gameObject.SetActive(false);
+        gameOverScreen.gameObject.SetActive(false);
+        gameHUD.SetActive(false);
 
-            isGameActive = false;
-        }
-        
+        isGameActive = false;
     }
-
-    public Timer timerVariable;
 
     public void GameOver()
     {
-        if (timerVariable.timer == 0f)
-        {
-            pauseScreen.gameObject.SetActive(false);
-            startScreen.gameObject.SetActive(false);
-            levelEndScreen.gameObject.SetActive(false);
-            optionsScreen.gameObject.SetActive(false);
-            controlsScreen.gameObject.SetActive(false);
-            gameOverScreen.gameObject.SetActive(true);
-            gameHUD.gameObject.SetActive(false);
+        pauseScreen.gameObject.SetActive(false);
+        startScreen.gameObject.SetActive(false);
+        levelEndScreen.gameObject.SetActive(false);
+        optionsScreen.gameObject.SetActive(false);
+        controlsScreen.gameObject.SetActive(false);
+        gameOverScreen.gameObject.SetActive(true);
+        gameHUD.SetActive(false);
 
-            isGameActive = false;
-        }
+        isGameActive = false;
     }
 
-    public void FreezePlayer()
-    {
-        if (isGameActive == false)
-        {
-            playerRb.constraints = RigidbodyConstraints.FreezePosition;
-            playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-        }
-        if (isGameActive == true)
-        {
-            playerRb.constraints = RigidbodyConstraints.None;
-            playerRb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
-
-        }
-    }
+    // Going to need to put the below commented text in the player movement script:
+    //
+    //private GameManager gameManager;
+    //
+    //void Start()
+    //{
+    //gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    //}
+    //
+    //private void OnTriggerEnter()
+    //{
+    //    gameManager.UpdateScore(1);
+    //}
 }

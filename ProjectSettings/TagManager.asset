@@ -6,8 +6,6 @@ TagManager:
   tags:
   - whatIsGround
   - CheesePickup
-  - PlayerObj
-  - Furniture
   layers:
   - Default
   - TransparentFX
@@ -16,7 +14,7 @@ TagManager:
   - Water
   - UI
   - whatIsPlayer
-  - Furniture
+  - 
   - 
   - 
   - 

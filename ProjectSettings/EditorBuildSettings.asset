@@ -4,11 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/betterHierarchy.unity
-    guid: 44ba4050b4f62c24ba7b816783dcb7de
-  - enabled: 1
-    path: Assets/Scenes/betterHierarchy 2 (DONT USE).unity
-    guid: 64315b9eaabf82e4895ee8684fc2c604
+  m_Scenes: []
   m_configObjects: {}

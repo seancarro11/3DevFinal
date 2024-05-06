@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class WinConditionPlus : MonoBehaviour
 {
-    int Score = 0;
+    int Score;
 
     void Update()
     {
         if (Score >= 6)
         {
-            Debug.Log("You Win!");
+            SceneManager.LoadScene("LevelEndScene", LoadSceneMode.Single);
         }
     }
 
@@ -20,13 +20,10 @@ public class WinConditionPlus : MonoBehaviour
         if (cheese.CompareTag("Cheese"))
         {
             Debug.Log("Collected a piece of cheese!");
-           
-            Score = Score + 1;
-            
 
+            Destroy(cheese.gameObject);
            
+            Score++;
         }
-     
     }
-    
 }
