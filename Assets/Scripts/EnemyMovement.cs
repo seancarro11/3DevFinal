@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
