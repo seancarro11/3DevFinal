@@ -7,11 +7,22 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_Name: Bar Table
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _METALLICGLOSSMAP
+  - _NORMALMAP
+  - _PARALLAXMAP
+=======
   m_Name: Chair Material
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
+>>>>>>> parent of 7e60f9f (Merge branch 'Zach-Branch' of https://github.com/seancarro11/3DevFinal into Zach-Branch)
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -24,7 +35,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
+<<<<<<< HEAD
+        m_Texture: {fileID: 2800000, guid: 5c1c6b0149cb2dd418e41ee3780a0d30, type: 3}
+=======
         m_Texture: {fileID: 0}
+>>>>>>> parent of 7e60f9f (Merge branch 'Zach-Branch' of https://github.com/seancarro11/3DevFinal into Zach-Branch)
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,11 +59,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD
+        m_Texture: {fileID: 2800000, guid: 7c788f5b986bb364ebd02294387aca24, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: d126059a550d9a540953ab1d3e8bb45d, type: 3}
+=======
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+>>>>>>> parent of 7e60f9f (Merge branch 'Zach-Branch' of https://github.com/seancarro11/3DevFinal into Zach-Branch)
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -56,7 +79,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+<<<<<<< HEAD
+        m_Texture: {fileID: 2800000, guid: 7a33045308899ea40b5909e5ac507c65, type: 3}
+=======
         m_Texture: {fileID: 0}
+>>>>>>> parent of 7e60f9f (Merge branch 'Zach-Branch' of https://github.com/seancarro11/3DevFinal into Zach-Branch)
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -65,7 +92,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+<<<<<<< HEAD
+    - _GlossMapScale: 0.667
+=======
     - _GlossMapScale: 1
+>>>>>>> parent of 7e60f9f (Merge branch 'Zach-Branch' of https://github.com/seancarro11/3DevFinal into Zach-Branch)
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
@@ -78,6 +109,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+=======
     - _Color: {r: 0.38679248, g: 0.17384505, b: 0.06750623, a: 1}
+>>>>>>> parent of 7e60f9f (Merge branch 'Zach-Branch' of https://github.com/seancarro11/3DevFinal into Zach-Branch)
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

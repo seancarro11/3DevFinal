@@ -6,6 +6,8 @@ public class CheeseCount : MonoBehaviour
 {
     public static CheeseCount instance;
     public List<CheesePickup> items = new List<CheesePickup>();
+    public int cheeseNumber = 0;
+    // public GameObject uiLevelEnd; (assign the Level End screen here)
 
     private void Awake()
     {
@@ -25,13 +27,25 @@ public class CheeseCount : MonoBehaviour
             {
                 item.count += itemToAdd.count;
                 itemExists = true;
+                cheeseNumber += 1;
                 break;
             }
         }
         if (!itemExists)
         {
             items.Add(itemToAdd);
+            cheeseNumber += 1;
         }
         Debug.Log(itemToAdd.count + " " + itemToAdd.moniker + " collected!");
     }
+
+    public void WinCon()
+    {
+        if (cheeseNumber == 4)
+        {
+            Debug.Log("You Win!");
+            // Connect the uiLevelEnd here!
+        }
+    }
+
 }
