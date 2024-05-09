@@ -168,8 +168,8 @@ public class CharacterControllerZach : MonoBehaviour
 
     public void UpdateScore()
     {
-        scoreText.text = "Cheese: " + cheeseScore + " ";
-        endScoreText.text = "You got " + cheeseScore + "/35 cheese pieces";
+        scoreText.text = "Cheese: " + cheeseScore + "/40";
+        endScoreText.text = "You got " + cheeseScore + "/40 cheese pieces";
         levelEndScoreText.text = "Cheese Pieces: " + cheeseScore;
 
     }
